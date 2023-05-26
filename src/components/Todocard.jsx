@@ -1,7 +1,7 @@
 import { useState, useRef, useEffect } from "react";
-import { GiCheckMark } from "react-icons/gi";
-import { RiEdit2Fill } from "react-icons/ri";
-import { FaTrash } from "react-icons/fa";
+import { TbTrashXFilled } from 'react-icons/tb';
+import { GoPencil } from 'react-icons/go';
+import { MdCheckBox } from 'react-icons/md';
 import { useDispatch } from "react-redux";
 import { actions } from "../features/todos/todosSlice";
 
@@ -43,30 +43,28 @@ const TodoCard = ({ todo }) => {
   }, [editing]);
 
   return (
-    <div className="flex justify-between p-2 bg-slate-300 rounded mb-4 items-center">
-      {editing ? (
-        <input type="text" value={updatedContent} onChange={(e) => setUpdatedContent(e.target.value)} className="border border-gray-300 rounded p-1" ref={inputRef} onKeyDown={(e) => handleKeyDown(e, todo.id)} />
-      ) : (
-        <p style={{ textDecoration: todo.completed ? "line-through" : "none" }}>{todo.content}</p>
-      )}
+    <div className="flex justify-between p-4 border-2 rounded mb-4 items-center">
+      <div className="flex gap-4 items-center">
+        <input type="checkbox" name="completed" className="h-6 w-6" checked={todo.completed} onChange={() => handleToggle(todo.id)} />
+        {!editing ? (
+          <p style={{ textDecoration: todo.completed ? "line-through" : "none" }}>{todo.content}</p>
+        ) : (
+          <input type="text" value={updatedContent} onChange={(e) => setUpdatedContent(e.target.value)} className="border border-gray-300 rounded p-1" ref={inputRef} onKeyDown={(e) => handleKeyDown(e, todo.id)} />
+        )}
+      </div>
       {!todo.completed && (
-        <div className="flex gap-1 items-center">
-          <input type="checkbox" name="completed" checked={todo.completed} onChange={() => handleToggle(todo.id)} />
-          <label className="font-medium" htmlFor="completed">
-            Completed
-          </label>
-          <div></div>
+        <div className="flex gap-2">
           {editing ? (
-            <button className="btn" onClick={() => handleSave(todo.id)}>
-              <GiCheckMark />
+            <button className="btn bg-white hover:bg-violet-600" onClick={() => handleSave(todo.id)}>
+              <MdCheckBox />
             </button>
           ) : (
-            <button className="btn" onClick={handleEdit}>
-              <RiEdit2Fill />
+            <button className="btn bg-white hover:bg-violet-600" onClick={handleEdit}>
+              <GoPencil />
             </button>
           )}
-          <button className="btn" onClick={() => handleRemove(todo.id)}>
-            <FaTrash />
+          <button className="btn bg-white hover:bg-violet-600" onClick={() => handleRemove(todo.id)}>
+            <TbTrashXFilled />
           </button>
         </div>
       )}

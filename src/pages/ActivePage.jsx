@@ -10,7 +10,7 @@ const ActivePage = () => {
         <div>
             {
                 activeTodos.map((todo, index) => (
-                    <TodoCard 
+                    <TodoCard
                         key={index}
                         todo={todo}
                     />

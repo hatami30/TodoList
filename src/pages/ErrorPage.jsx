@@ -9,7 +9,7 @@ const ErrorPage = () => {
                 <button>Back to home</button>
             </Link>
         </div>
-    ) ;
+    );
 }
 
 export default ErrorPage

@@ -13,7 +13,7 @@ const HomePage = () => {
                 message: userInput,
                 completed: false,
             }
-    
+
             setTodos(currentTodos => [newTodo, ...currentTodos]);
             setUserInput("");
         }
@@ -21,8 +21,8 @@ const HomePage = () => {
 
     const handleMarkAsCompleted = (id) => {
         setTodos(currentTodos => currentTodos.map(todo => {
-            if (todo.id === id){
-                return {...todo, completed: !todo.completed}
+            if (todo.id === id) {
+                return { ...todo, completed: !todo.completed }
             }
             return todo
         }))
@@ -35,20 +35,20 @@ const HomePage = () => {
     console.log({ todos })
 
     return (
-        
+
         <div className="max-w-lg">
-            <div className="row text-center p-10 bg-red-500 hover:bg-red-700 text-white ">
-                    <div className="col">
-                        <h1 className="text-4xl">What's the plan for today?</h1>
-                    </div>
+            <div className="row text-center p-10 text-gray-800">
+                <div className="col">
+                    <h1 className="text-4xl">What's the plan for today?</h1>
                 </div>
+            </div>
             <div className="flex gap-2 p-2 ">
-                <input 
+                <input
                     type="text"
                     value={userInput}
                     onChange={(e) => setUserInput(e.target.value)}
                     placeholder="What to do"
-                    className="p-2 w-full border-cyan-400 border-solid border-2 rounded"
+                    className="p-2 w-full border-solid border-2 rounded"
                 />
                 <button className="btn" onClick={handleCreateTodo}>ADD</button>
             </div>

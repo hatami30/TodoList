@@ -9,7 +9,7 @@ const AllPage = () => {
         <div>
             {
                 todos.map((todo, index) => (
-                    <TodoCard 
+                    <TodoCard
                         key={index}
                         todo={todo}
                     />
