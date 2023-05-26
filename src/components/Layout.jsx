@@ -20,7 +20,7 @@ const Layout = () => {
 
   return (
     <>
-      <div className="flex items-center justify-center h-screen">
+      <div className="flex items-center justify-center overflow-auto h-screen">
         <div className="max-w-2xl container mx-auto">
           <div className="row text-center p-5 text-gray-800 font-bold mb-12">
             <div className="col">
